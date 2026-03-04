@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "KK 搶票助手",
+  "version": "2.1",
+  "description": "自動化票務購票流程 - 含倒數計時、自動選票、自動同意條款",
+  "permissions": ["storage", "scripting"],
+  "host_permissions": ["*://*.kktix.com/*", "*://*.kktix.cc/*"],
+  "action": {
+    "default_title": "KK 搶票助手"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.kktix.com/events/*/registrations/*", "*://*.kktix.cc/events/*/registrations/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
